@@ -35,6 +35,7 @@
 		// cmake
 		"cmake.useCMakePresets": "always",
 		"cmake.configureOnOpen": false,
+		"cmake.sourceDirectory": "${workspaceFolder:repo}",
 
 		// code runner
 		"code-runner.runInTerminal": true,
