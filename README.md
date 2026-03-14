@@ -7,7 +7,7 @@
 Lichen is a Game Engine written in Raylib (cross-platform wrapper for OpenGL) and C++ <br>
 While initially developed on Linux Mint, it plans on being cross-platform for Windows and Mac as well.
 
-I was inspire for this project by the [Hazel](https://github.com/TheCherno/Hazel) game engine.
+I was inspired for this project by the [Hazel](https://github.com/TheCherno/Hazel) game engine, and am actively using it as a reference to how the way things work in this. Thank you so much, TheCherno!
 
 In Hazel, TheCherno uses OpenGL and Visual Studio, developing on Windows. <br>
 In Lichen, I'll be using Raylib and VSCode, developing on Linux.
