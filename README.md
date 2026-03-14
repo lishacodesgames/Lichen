@@ -41,4 +41,14 @@ Coming soon...
 
 ## License
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details. <br>
-Copyright (c) 2026 Lisha
+Copyright (c) 2026 lishacodesgames
+
+#### This means you can:
+- Use this software for any purpose (personal or commercial).
+- Modify the source code to suit your needs.
+- Distribute the original or modified versions of the software.
+- Sublicense the code under different terms.
+#### As long as you:
+- Include a copy of the original license and copyright notice.
+- State Changes: Clearly mark any significant modifications you made to the files.
+- Keep Notices: Retain all existing copyright, patent, and trademark notices.
