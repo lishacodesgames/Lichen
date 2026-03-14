@@ -1,8 +1,0 @@
-
-namespace Lichen {
-   void Print();
-}
-
-int main() {
-   Lichen::Print();
-}
