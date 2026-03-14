@@ -12,5 +12,5 @@ set(LICHEN_OUTPUT_BASE
    ${CMAKE_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}${PRESET_NAME}-${CMAKE_SYSTEM_PROCESSOR}
 )
 
-add_subdirectory(Lichen)
+add_subdirectory(LichenEngine)
 add_subdirectory(Sandbox)

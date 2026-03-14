@@ -5,7 +5,8 @@
 			"name": "repo"
 		},
 		{
-			"path": "Lichen"
+			"path": "LichenEngine",
+			"name": "Lichen"
 		},
 		{
 			"path": "Sandbox"
@@ -28,6 +29,7 @@
 		// c++ format
 		"C_Cpp.clang_format_fallbackStyle": "Google",
 		"C_Cpp.default.compilerPath": "/usr/bin/g++",
+		"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
 		"C_Cpp.vcFormat.indent.preserveComments": true,
 
 		// cmake
