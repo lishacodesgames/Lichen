@@ -2,7 +2,6 @@
 #include "Core.h"
 
 namespace Lichen {
-
    class LICH_API Application {
    public:
       Application() = default;
@@ -10,4 +9,7 @@ namespace Lichen {
 
       void Run();
    };
+
+   Application* CreateApplication(); /// TO BE DEFINED IN CLIENT
+
 }

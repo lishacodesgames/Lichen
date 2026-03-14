@@ -4,4 +4,6 @@
 // CLIENT APPLICATIONS, NOT THE ENGINE
 // -----------------------------------------------
 
+#include "Lichen/EntryPoint.h"
+
 #include "Lichen/Application.h"

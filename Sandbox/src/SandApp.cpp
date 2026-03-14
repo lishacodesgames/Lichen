@@ -6,10 +6,4 @@ public:
    ~Sandbox() = default;
 };
 
-int main() {
-   Sandbox* myGame = new Sandbox();
-
-   
-   delete myGame;
-   return 0;
-}
+Lichen::Application* Lichen::CreateApplication() { return new Sandbox(); }
