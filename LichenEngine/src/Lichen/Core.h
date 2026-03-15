@@ -9,3 +9,6 @@
 #else
    #define LCH_API
 #endif
+
+// sets the (x+1)th bit from the right to 1 i.e. BIT(2) = 2^2 = 0100
+#define BIT(x) (1 << x)
