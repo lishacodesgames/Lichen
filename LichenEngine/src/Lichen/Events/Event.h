@@ -50,7 +50,8 @@ namespace Lichen {
       virtual EventType getEventType() const = 0;
       virtual const char* getName() const = 0;
       virtual int getCategoryFlags() const = 0;
-      virtual std::string describe() const { return getName(); }
+
+      [[nodiscard]] virtual std::string describe() const { return getName(); }
 
       /// @return TRUE, if: true bits are overlapping
       inline bool hasCategory(EventCategory category) {
