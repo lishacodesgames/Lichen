@@ -21,7 +21,7 @@ namespace Lichen {
       KeyPressedEvent(int keycode, int repeatCount) : KeyEvent(keycode), m_repeat(repeatCount) {}
 
       inline int getRepeats() const { return m_repeat; }
-      [[nodiscard]] std::string describe() const override {
+      std::string describe() const override {
          return
             "Key Pressed: " + std::to_string(m_key) + "\t(" + std::to_string(m_repeat) + " times)";
       }
