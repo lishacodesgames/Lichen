@@ -1,5 +1,6 @@
 #pragma once
 #include <functional>
+#include <iostream>
 #include <string>
 #include "Core.h"
 
@@ -15,6 +16,7 @@ namespace Lichen {
       None,
       WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
       AppTick, AppUpdate, AppRender,
+      KeyPressed, KeyReleased,
       MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
    };
 
@@ -28,13 +30,16 @@ namespace Lichen {
       EventCategoryMouseButton   = BIT(4)
    };
 
+   /// @param cat an integer bitfield of the categories an event belongs to as per EventCategory enum
+   #define EVENT_CLASS_CATEGORY(cat) int GetCategoryFlags() const override { return cat; }
+
    /*
       ## pastes the argument as it is right there 
       # stringizes the argument
    */
    /// @param type Name of the type as per EventType's members
    #define EVENT_CLASS_TYPE(type) \
-      static GetStaticType() const { return EventType::##type; }  /* For compiletime access */ \
+      static EventType GetStaticType() { return EventType::##type; }  /* For compiletime access */ \
       EventType GetEventType() const override { return EventType::##type; } /* Same as GetStaticType, but for runtime access */ \
       const char* GetName() const override { return #type; }
 
@@ -47,8 +52,10 @@ namespace Lichen {
       virtual int GetCategoryFlags() const = 0;
       virtual std::string Describe() const { return GetName(); }
 
-      /// if true bits are overlapping, returns true
-      inline bool IsInCategory(EventCategory category) { return GetCategoryFlags() & category; }
+      /// @return TRUE, if: true bits are overlapping
+      inline bool IsInCategory(EventCategory category) {
+         return (GetCategoryFlags() & category) != 0; 
+      }
    protected:
       bool m_Handled = false; 
    };
