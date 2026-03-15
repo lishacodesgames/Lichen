@@ -9,7 +9,7 @@ namespace Lichen
    std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
 
    void Log::Init() {
-      spdlog::set_pattern("%^[%T][%n,%l]: TODO%v%$"); // [23:55:59][Client,info]: message
+      spdlog::set_pattern("%^[%n]%T-[%l]: %v%$"); // [23:55:59][Client,info]: message
       
       // logger with console and multi-threading properties
       s_CoreLogger = spdlog::stdout_color_mt("LICHEN");
