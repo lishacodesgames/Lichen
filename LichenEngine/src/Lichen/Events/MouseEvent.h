@@ -25,8 +25,8 @@ namespace Lichen {
       EVENT_CLASS_TYPE(MouseScrolled)
       MouseScrolledEvent(double xOffset, double yOffset) : m_xOffset(xOffset), m_yOffset(yOffset) {}
    
-      double getXOffset() const { return m_xOffset; }
-      double getYOffset() const { return m_yOffset; }
+      inline double getXOffset() const { return m_xOffset; }
+      inline double getYOffset() const { return m_yOffset; }
 
       std::string describe() const override {
          return "Mouse Scrolled by (" + std::to_string(m_xOffset) + ", " + std::to_string(m_yOffset) + ")";
@@ -39,7 +39,7 @@ namespace Lichen {
    class LCH_API MouseButtonEvent : public Event {
    public:
       EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse | EventCategoryMouseButton)
-      int getButton() const { return m_button; }
+      inline int getButton() const { return m_button; }
    protected:
       int m_button;
       MouseButtonEvent(int button) : m_button(button) {}
