@@ -36,8 +36,44 @@ I hope to learn a lot from this project as I have only made simple games till no
 ## Architecture
 Coming soon...
 
-## Build Instructions
-Coming soon...
+## How to Clone
+`git clone --recursive` to get the raylib submodule local
+<br>
+
+**If you forgot, do:** <br>
+`git submodule update --init --recursive` after regular `git clone`
+
+### Build
+```bash
+cmake --preset Distro
+cmake --build --preset Distro
+./bin/Distro_<your-OS>-<your-arch>/Sandbox/Sandbox
+```
+**Note:** <br> 
+- for Windows, omit the `./` and add `.exe` at the end
+- Make sure you're running from the repo directory `Lichen/`
+- Make sure you have cmake and ninja in your path variables
+
+### Linux Dependencies
+Raylib requires a lot of libraries that are built-in on Mac and Windows. <br>
+No worries, Linux just requires 1 command to install them all:
+```bash
+sudo apt install \
+    libx11-dev \
+    libxcursor-dev \
+    libxrandr-dev \
+    libxi-dev \
+    libxinerama-dev \
+    libgl1-mesa-dev \
+    libasound2-dev \
+    libpulse-dev \
+    libxkbcommon-dev
+```
+
+### Requirements
+* CMake 3.20+
+* C++ compiler: GCC 13.3 / Clang
+* Ninja (not *required*, but it's what the presets use)
 
 ## License
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details. <br>
