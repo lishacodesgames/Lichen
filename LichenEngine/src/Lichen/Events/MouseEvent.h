@@ -7,15 +7,31 @@ namespace Lichen {
    public:  
       EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
       EVENT_CLASS_TYPE(MouseMoved)
-      MouseMovedEvent(float x, float y) : m_mouseX(x), m_mouseY(y) {}
+      MouseMovedEvent(double x, double y) : m_mouseX(x), m_mouseY(y) {}
 
-      inline float getX() const { return m_mouseX; }
-      inline float getY() const { return m_mouseY; }
+      inline double getX() const { return m_mouseX; }
+      inline double getY() const { return m_mouseY; }
 
       [[nodiscard]] std::string describe() const override {
          return "Mouse Moved to: (" + std::to_string(m_mouseX) + ", " + std::to_string(m_mouseY) + ")";
       }
    private:
-      float m_mouseX, m_mouseY;
+      double m_mouseX, m_mouseY;
+   };
+
+   class LCH_API MouseScrolledEvent : public Event {
+   public:
+      EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
+      EVENT_CLASS_TYPE(MouseScrolled)
+      MouseScrolledEvent(double xOffset, double yOffset) : m_xOffset(xOffset), m_yOffset(yOffset) {}
+   
+      double getXOffset() const { return m_xOffset; }
+      double getYOffset() const { return m_yOffset; }
+
+      [[nodiscard]] std::string describe() const override {
+         return "Mouse Scrolled by (" + std::to_string(m_xOffset) + ", " + std::to_string(m_yOffset) + ")";
+      }
+   private:
+      double m_xOffset, m_yOffset;
    };
 }
