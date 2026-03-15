@@ -1,15 +1,32 @@
 cmake_minimum_required(VERSION 3.20)
 project(LichenEngine LANGUAGES C CXX)
 
-if(NOT DEFINED ENV{CMAKE_PRESET_NAME}) # if someone is running without presets
+# add preset and configuration macros
+if(NOT DEFINED LICHEN_PRESET_NAME) # if someone is running without presets
    set(PRESET_NAME ${CMAKE_BUILD_TYPE})
+
+   if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+      add_compile_definitions(LCH_CFG_DEBUG)
+   elseif("${CMAKE_BUILD_TYPE}" STREQUAL "RelWithDebInfo")
+      add_compile_definitions(LCH_CFG_RELEASE)
+   else()
+      add_compile_definitions(LCH_CFG_DISTRO)
+   endif()
 else()
-   set(PRESET_NAME $ENV{CMAKE_PRESET_NAME})
+   set(PRESET_NAME ${LICHEN_PRESET_NAME})
+   
+   if("${LICHEN_PRESET_NAME}" STREQUAL "Debug")
+      add_compile_definitions(LCH_CFG_DEBUG)
+   elseif("${LICHEN_PRESET_NAME}" STREQUAL "Release")
+      add_compile_definitions(LCH_CFG_RELEASE)
+   else()
+      add_compile_definitions(LCH_CFG_DISTRO)
+   endif()
 endif()
 
 set(LICHEN_OUTPUT_BASE
    # example: bin/LinuxDebug-x86_64
-   ${CMAKE_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}${PRESET_NAME}-${CMAKE_SYSTEM_PROCESSOR}
+   ${CMAKE_SOURCE_DIR}/bin/${PRESET_NAME}_${CMAKE_HOST_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}
 )
 
 # add platform macros
