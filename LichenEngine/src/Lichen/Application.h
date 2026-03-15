@@ -2,7 +2,7 @@
 #include "Core.h"
 
 namespace Lichen {
-   class LICH_API Application {
+   class LCH_API Application {
    public:
       Application() = default;
       virtual ~Application() = default;

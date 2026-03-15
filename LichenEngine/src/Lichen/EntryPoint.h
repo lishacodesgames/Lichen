@@ -1,6 +1,6 @@
 #pragma once
 
-#if defined(LC_PLATFORM_WINDOWS) || defined(LC_PLATFORM_LINUX)
+#if defined(LCH_PLATFORM_WINDOWS) || defined(LCH_PLATFORM_LINUX)
 
    extern Lichen::Application* Lichen::CreateApplication();
 
@@ -8,10 +8,12 @@
       Lichen::Log::Init();
 
       int a = 100;
-      Lichen::Log::GetCoreLogger()->info("Today is a Sunday.");
-      Lichen::Log::GetCoreLogger()->warn("This is a {}", "warning");
-      Lichen::Log::GetClientLogger()->debug("DEBUGGING {}", a);
-      Lichen::Log::GetClientLogger()->error("You've made an error!!!", a);
+      LCH_CORE_TRACE("I'M BEING TRACED D:");
+      LCH_CORE_INFO("Today is a Sunday.");
+      LCH_CORE_WARN("This is a {}", "warning");
+      LCH_FATAL("CRITICAL");
+      LCH_DEBUG("DEBUGGING {}", a);
+      LCH_ERROR("You've made an error!!!", a);
       
       Lichen::Application* app = Lichen::CreateApplication();
       app->Run();

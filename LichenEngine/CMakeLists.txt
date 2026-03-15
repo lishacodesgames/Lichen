@@ -23,7 +23,7 @@ target_include_directories(LichenStatic PUBLIC
 )
 
 ## used for dllexport macro on Windows
-target_compile_definitions(LichenShared PRIVATE LC_BUILD_SHARED) 
+target_compile_definitions(LichenShared PRIVATE LCH_BUILD_SHARED) 
 
 set_target_properties(LichenShared PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${LICHEN_OUTPUT_BASE}/Lichen)
 set_target_properties(LichenStatic PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${LICHEN_OUTPUT_BASE}/Lichen)
