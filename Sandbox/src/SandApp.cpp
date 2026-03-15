@@ -1,12 +1,12 @@
 #include <Lichen.h>
 
-class Sandbox : public Lichen::Application {
+class Sandbox : public lichen::Application {
 public:
    Sandbox() = default;
    ~Sandbox() = default;
 };
 
-Lichen::Application* Lichen::CreateApplication() { 
+lichen::Application* lichen::CreateApplication() { 
    int a = 100;
    LCH_CORE_TRACE("I'M BEING TRACED D:");
    LCH_CORE_INFO("Today is a Sunday.");

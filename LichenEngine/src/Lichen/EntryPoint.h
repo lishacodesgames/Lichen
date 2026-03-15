@@ -2,12 +2,12 @@
 
 #if defined(LCH_PLATFORM_WINDOWS) || defined(LCH_PLATFORM_LINUX)
 
-   extern Lichen::Application* Lichen::CreateApplication();
+   extern lichen::Application* lichen::CreateApplication();
 
    int main() {
-      Lichen::Log::Init();
+      lichen::Log::Init();
       
-      Lichen::Application* app = Lichen::CreateApplication();
+      lichen::Application* app = lichen::CreateApplication();
       app->Run();
       
       delete app;

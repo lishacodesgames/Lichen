@@ -2,7 +2,7 @@
 #include <string>
 #include "Event.h"
 
-namespace Lichen {
+namespace lichen {
 
    class LCH_API KeyEvent : public Event {
    public:

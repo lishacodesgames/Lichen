@@ -2,7 +2,7 @@
 #include <cstdint>
 #include "Event.h"
 
-namespace Lichen {
+namespace lichen {
    // --------------
    // WINDOW EVENTS
    // --------------

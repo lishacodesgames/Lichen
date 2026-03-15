@@ -4,7 +4,7 @@
 #include <string>
 #include "Core.h"
 
-namespace Lichen {
+namespace lichen {
    /** Current status of Events: Blocking
     * Meaning, Events get dispatched as soon as they occur
     * No queuing has been implemented as of now

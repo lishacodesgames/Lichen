@@ -1,7 +1,7 @@
 #pragma once
 #include "Event.h"
 
-namespace Lichen {
+namespace lichen {
 
    class LCH_API MouseMovedEvent : public Event {
    public:  

@@ -1,3 +1,3 @@
 #include "Application.h"
 
-void Lichen::Application::Run() {}
+void lichen::Application::Run() {}

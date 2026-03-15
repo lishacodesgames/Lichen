@@ -3,7 +3,7 @@
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 
-namespace Lichen
+namespace lichen
 {
    std::shared_ptr<spdlog::logger> Log::s_coreLogger;
    std::shared_ptr<spdlog::logger> Log::s_clientLogger;
@@ -18,4 +18,4 @@ namespace Lichen
       s_clientLogger = spdlog::stdout_color_mt("CLIENT");
       s_clientLogger->set_level(spdlog::level::trace);
    }
-} // namespace Lichen
+} // namespace lichen

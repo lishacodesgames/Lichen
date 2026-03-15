@@ -3,7 +3,7 @@
 #include "spdlog/spdlog.h"
 #include "Core.h"
 
-namespace Lichen {
+namespace lichen {
    class LCH_API Log {
    public:
       static void Init();
@@ -18,12 +18,12 @@ namespace Lichen {
 
 #ifndef LCH_CFG_DISTRO
 
-   #define LCH_CORE_TRACE(...)   Lichen::Log::getCoreLogger()->trace(__VA_ARGS__)
-   #define LCH_CORE_INFO(...)    Lichen::Log::getCoreLogger()->info(__VA_ARGS__)
-   #define LCH_CORE_DEBUG(...)   Lichen::Log::getCoreLogger()->debug(__VA_ARGS__)
-   #define LCH_CORE_WARN(...)    Lichen::Log::getCoreLogger()->warn(__VA_ARGS__)
-   #define LCH_CORE_ERROR(...)   Lichen::Log::getCoreLogger()->error(__VA_ARGS__)
-   #define LCH_CORE_FATAL(...)   Lichen::Log::getCoreLogger()->critical(__VA_ARGS__)
+   #define LCH_CORE_TRACE(...)   lichen::Log::getCoreLogger()->trace(__VA_ARGS__)
+   #define LCH_CORE_INFO(...)    lichen::Log::getCoreLogger()->info(__VA_ARGS__)
+   #define LCH_CORE_DEBUG(...)   lichen::Log::getCoreLogger()->debug(__VA_ARGS__)
+   #define LCH_CORE_WARN(...)    lichen::Log::getCoreLogger()->warn(__VA_ARGS__)
+   #define LCH_CORE_ERROR(...)   lichen::Log::getCoreLogger()->error(__VA_ARGS__)
+   #define LCH_CORE_FATAL(...)   lichen::Log::getCoreLogger()->critical(__VA_ARGS__)
 
 #else
 
@@ -36,9 +36,9 @@ namespace Lichen {
 
 #endif
 
-#define LCH_TRACE(...)           Lichen::Log::getClientLogger()->trace(__VA_ARGS__)
-#define LCH_INFO(...)            Lichen::Log::getClientLogger()->info(__VA_ARGS__)
-#define LCH_DEBUG(...)           Lichen::Log::getClientLogger()->debug(__VA_ARGS__)
-#define LCH_WARN(...)            Lichen::Log::getClientLogger()->warn(__VA_ARGS__)
-#define LCH_ERROR(...)           Lichen::Log::getClientLogger()->error(__VA_ARGS__)
-#define LCH_FATAL(...)           Lichen::Log::getClientLogger()->critical(__VA_ARGS__)
+#define LCH_TRACE(...)           lichen::Log::getClientLogger()->trace(__VA_ARGS__)
+#define LCH_INFO(...)            lichen::Log::getClientLogger()->info(__VA_ARGS__)
+#define LCH_DEBUG(...)           lichen::Log::getClientLogger()->debug(__VA_ARGS__)
+#define LCH_WARN(...)            lichen::Log::getClientLogger()->warn(__VA_ARGS__)
+#define LCH_ERROR(...)           lichen::Log::getClientLogger()->error(__VA_ARGS__)
+#define LCH_FATAL(...)           lichen::Log::getClientLogger()->critical(__VA_ARGS__)
