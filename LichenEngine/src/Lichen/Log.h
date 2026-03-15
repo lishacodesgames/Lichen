@@ -8,22 +8,22 @@ namespace Lichen {
    public:
       static void Init();
 
-      static std::shared_ptr<spdlog::logger>& GetCoreLogger();
-      static std::shared_ptr<spdlog::logger>& GetClientLogger();
+      inline static std::shared_ptr<spdlog::logger>& Log::getCoreLogger() { return s_coreLogger; }
+      inline static std::shared_ptr<spdlog::logger>& Log::getClientLogger() { return s_clientLogger; }
    private:
-      static std::shared_ptr<spdlog::logger> s_CoreLogger;
-      static std::shared_ptr<spdlog::logger> s_ClientLogger;
+      static std::shared_ptr<spdlog::logger> s_coreLogger;
+      static std::shared_ptr<spdlog::logger> s_clientLogger;
    };
 }
 
 #ifndef LCH_CFG_DISTRO
 
-   #define LCH_CORE_TRACE(...)   Lichen::Log::GetCoreLogger()->trace(__VA_ARGS__)
-   #define LCH_CORE_INFO(...)    Lichen::Log::GetCoreLogger()->info(__VA_ARGS__)
-   #define LCH_CORE_DEBUG(...)   Lichen::Log::GetCoreLogger()->debug(__VA_ARGS__)
-   #define LCH_CORE_WARN(...)    Lichen::Log::GetCoreLogger()->warn(__VA_ARGS__)
-   #define LCH_CORE_ERROR(...)   Lichen::Log::GetCoreLogger()->error(__VA_ARGS__)
-   #define LCH_CORE_FATAL(...)   Lichen::Log::GetCoreLogger()->critical(__VA_ARGS__)
+   #define LCH_CORE_TRACE(...)   Lichen::Log::getCoreLogger()->trace(__VA_ARGS__)
+   #define LCH_CORE_INFO(...)    Lichen::Log::getCoreLogger()->info(__VA_ARGS__)
+   #define LCH_CORE_DEBUG(...)   Lichen::Log::getCoreLogger()->debug(__VA_ARGS__)
+   #define LCH_CORE_WARN(...)    Lichen::Log::getCoreLogger()->warn(__VA_ARGS__)
+   #define LCH_CORE_ERROR(...)   Lichen::Log::getCoreLogger()->error(__VA_ARGS__)
+   #define LCH_CORE_FATAL(...)   Lichen::Log::getCoreLogger()->critical(__VA_ARGS__)
 
 #else
 
@@ -36,9 +36,9 @@ namespace Lichen {
 
 #endif
 
-#define LCH_TRACE(...)           Lichen::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define LCH_INFO(...)            Lichen::Log::GetClientLogger()->info(__VA_ARGS__)
-#define LCH_DEBUG(...)           Lichen::Log::GetClientLogger()->debug(__VA_ARGS__)
-#define LCH_WARN(...)            Lichen::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define LCH_ERROR(...)           Lichen::Log::GetClientLogger()->error(__VA_ARGS__)
-#define LCH_FATAL(...)           Lichen::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define LCH_TRACE(...)           Lichen::Log::getClientLogger()->trace(__VA_ARGS__)
+#define LCH_INFO(...)            Lichen::Log::getClientLogger()->info(__VA_ARGS__)
+#define LCH_DEBUG(...)           Lichen::Log::getClientLogger()->debug(__VA_ARGS__)
+#define LCH_WARN(...)            Lichen::Log::getClientLogger()->warn(__VA_ARGS__)
+#define LCH_ERROR(...)           Lichen::Log::getClientLogger()->error(__VA_ARGS__)
+#define LCH_FATAL(...)           Lichen::Log::getClientLogger()->critical(__VA_ARGS__)

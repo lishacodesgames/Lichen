@@ -6,7 +6,7 @@ namespace Lichen {
 
    class LCH_API KeyEvent : public Event {
    public:
-      inline int GetKeyCode() const { return m_key; }
+      inline int getKeyCode() const { return m_key; }
       EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
    protected:
       int m_key;
@@ -20,8 +20,8 @@ namespace Lichen {
       EVENT_CLASS_TYPE(KeyPressed)
       KeyPressedEvent(int keycode, int repeatCount) : KeyEvent(keycode), m_repeat(repeatCount) {}
 
-      inline int GetRepeats() const { return m_repeat; }
-      std::string Describe() const override {
+      inline int getRepeats() const { return m_repeat; }
+      std::string describe() const override {
          return
             "Key Pressed: " + std::to_string(m_key) + "\t(" + std::to_string(m_repeat) + " times)";
       }
@@ -34,6 +34,6 @@ namespace Lichen {
       EVENT_CLASS_TYPE(KeyReleased)
       KeyReleasedEvent(int keycode) : KeyEvent(keycode) {}
 
-      std::string Describe() const override { return "Key Released: " + std::to_string(m_key); }
+      std::string describe() const override { return "Key Released: " + std::to_string(m_key); }
    };
 }

@@ -5,21 +5,17 @@
 
 namespace Lichen
 {
-   std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
-   std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
+   std::shared_ptr<spdlog::logger> Log::s_coreLogger;
+   std::shared_ptr<spdlog::logger> Log::s_clientLogger;
 
    void Log::Init() {
       spdlog::set_pattern("%^[%n]%T-[%l]: %v%$"); // [23:55:59][Client,info]: message
       
       // logger with console and multi-threading properties
-      s_CoreLogger = spdlog::stdout_color_mt("LICHEN");
-      s_CoreLogger->set_level(spdlog::level::trace);
+      s_coreLogger = spdlog::stdout_color_mt("LICHEN");
+      s_coreLogger->set_level(spdlog::level::trace);
 
-      s_ClientLogger = spdlog::stdout_color_mt("CLIENT");
-      s_ClientLogger->set_level(spdlog::level::trace);
+      s_clientLogger = spdlog::stdout_color_mt("CLIENT");
+      s_clientLogger->set_level(spdlog::level::trace);
    }
-
-   std::shared_ptr<spdlog::logger>& Log::GetCoreLogger() { return s_CoreLogger; }
-   std::shared_ptr<spdlog::logger>& Log::GetClientLogger() { return s_ClientLogger; }
-
 } // namespace Lichen

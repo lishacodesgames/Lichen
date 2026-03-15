@@ -31,7 +31,7 @@ namespace Lichen {
    };
 
    /// @param cat an integer bitfield of the categories an event belongs to as per EventCategory enum
-   #define EVENT_CLASS_CATEGORY(cat) int GetCategoryFlags() const override { return cat; }
+   #define EVENT_CLASS_CATEGORY(cat) int getCategoryFlags() const override { return cat; }
 
    /*
       ## pastes the argument as it is right there 
@@ -39,25 +39,25 @@ namespace Lichen {
    */
    /// @param type Name of the type as per EventType's members
    #define EVENT_CLASS_TYPE(type) \
-      static EventType GetStaticType() { return EventType::##type; }  /* For compiletime access */ \
-      EventType GetEventType() const override { return EventType::##type; } /* Same as GetStaticType, but for runtime access */ \
-      const char* GetName() const override { return #type; }
+      static EventType getStaticType() { return EventType::##type; }  /* For compiletime access */ \
+      EventType getEventType() const override { return EventType::##type; } /* Same as GetStaticType, but for runtime access */ \
+      const char* getName() const override { return #type; }
 
    class LCH_API Event {
       friend class EventDispatcher;
    public:
       /// ---- GETTERS ----
-      virtual EventType GetEventType() const = 0;
-      virtual const char* GetName() const = 0;
-      virtual int GetCategoryFlags() const = 0;
-      virtual std::string Describe() const { return GetName(); }
+      virtual EventType getEventType() const = 0;
+      virtual const char* getName() const = 0;
+      virtual int getCategoryFlags() const = 0;
+      virtual std::string describe() const { return getName(); }
 
       /// @return TRUE, if: true bits are overlapping
-      inline bool IsInCategory(EventCategory category) {
-         return (GetCategoryFlags() & category) != 0; 
+      inline bool hasCategory(EventCategory category) {
+         return (getCategoryFlags() & category) != 0; 
       }
    protected:
-      bool m_Handled = false; 
+      bool m_handled = false; 
    };
 
    class EventDispatcher {
@@ -68,8 +68,8 @@ namespace Lichen {
       template <typename Child> 
       bool Dispatch(std::function<bool(Child&)> handleEvent) {
          // comparing compiletime type with runtime type
-         if(m_event.GetEventType() == Child::GetStaticType()) { 
-            m_event.m_Handled = handleEvent(static_cast<Child&>(m_event));
+         if(m_event.getEventType() == Child::GetStaticType()) { 
+            m_event.m_handled = handleEvent(static_cast<Child&>(m_event));
             return true;
          } 
          else return false;
