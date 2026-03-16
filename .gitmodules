@@ -1,3 +1,0 @@
-[submodule "LichenEngine/external/spdlog"]
-	path = LichenEngine/external/spdlog
-	url = https://github.com/gabime/spdlog.git
