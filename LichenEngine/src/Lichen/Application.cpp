@@ -3,6 +3,7 @@
 
 #include "Events/ApplicationEvent.h"
 #include "Events/Event.h"
+#include "Log.h"
 
 void lichen::Application::Run() {
    int a = 100;

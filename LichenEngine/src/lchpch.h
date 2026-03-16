@@ -1,13 +1,14 @@
 // ONLY MEANT TO BE INCLUDED IN CPP FILES 
 #pragma once
 
-// ---- LICHEN ----
-#include "Lichen/Log.h"
-
 // ---- SPDLOG ----
-#define SPDLOG_HEADER_ONLY
-#include <spdlog/sinks/stdout_color_sinks.h>
-#include <spdlog/spdlog.h>
+#include "spdlog/spdlog.h"
+#include "spdlog/sinks/stdout_sinks.h"
+
+// ---- PLATFORM ----
+#if defined(LCH_PLATFORM_WINDOWS)
+   #include <Windows.h>
+#endif
 
 // ---- STL ----
 #include <unordered_map>
@@ -22,8 +23,3 @@
 #include <utility>
 #include <memory>
 #include <cstdint>
-
-// ---- PLATFORM ----
-#if defined(LCH_PLATFORM_WINDOWS)
-   #include <Windows.h>
-#endif
