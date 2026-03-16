@@ -28,4 +28,27 @@ namespace lichen {
       EVENT_CLASS_CATEGORY(EventCategoryApplication)
       EVENT_CLASS_TYPE(WindowClose)
    };
+
+   // ---------------
+   // APP EVENTS
+   // ---------------
+
+   class AppTickEvent : public Event {
+   public:  
+      EVENT_CLASS_CATEGORY(EventCategoryApplication)
+      EVENT_CLASS_TYPE(AppTick)
+   };
+
+   class AppUpdateEvent : public Event {
+   public:  
+      EVENT_CLASS_CATEGORY(EventCategoryApplication)
+      EVENT_CLASS_TYPE(AppUpdate)
+   };
+
+   class AppRenderEvent : public Event {
+   public:  
+      EVENT_CLASS_CATEGORY(EventCategoryApplication)
+      EVENT_CLASS_TYPE(AppRender)
+   };
+
 }
