@@ -44,6 +44,7 @@ Coming soon...
 `git submodule update --init --recursive` after regular `git clone`
 
 ### Build
+
 ```bash
 cmake --preset Distro
 cmake --build --preset Distro
@@ -54,6 +55,11 @@ cmake --build --preset Distro
 - Make sure you're running from the repo directory `Lichen/`
 - Make sure you have cmake and ninja in your path variables
 
+#### Presets
+1. Debug — All debug symbols turned on, optimization off
+2. Release — Debug symbols on, optimization on
+3. Distro — Debug symbols off, optimization on
+   
 ### Linux Dependencies
 Raylib requires a lot of libraries that are built-in on Mac and Windows. <br>
 No worries, Linux just requires 1 command to install them all:
