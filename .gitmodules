@@ -1,3 +1,6 @@
 [submodule "glfw"]
 	path = LichenEngine/external/glfw
 	url = https://github.com/lishacodesgames/slim-glfw.git
+[submodule "spdlog"]
+	path = LichenEngine/external/spdlog
+	url = https://github.com/lishacodesgames/slim-spdlog.git
