@@ -28,12 +28,12 @@ namespace lichen
 
 #else
 
-   #define LCH_CORE_TRACE
-   #define LCH_CORE_INFO
-   #define LCH_CORE_DEBUG  
-   #define LCH_CORE_WARN
-   #define LCH_CORE_ERROR
-   #define LCH_CORE_FATAL
+   #define LCH_CORE_TRACE(...)
+   #define LCH_CORE_INFO(...)
+   #define LCH_CORE_DEBUG(...)
+   #define LCH_CORE_WARN(...)
+   #define LCH_CORE_ERROR(...)
+   #define LCH_CORE_FATAL(...)
 
 #endif
 
