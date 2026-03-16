@@ -1,3 +1,4 @@
+#include <lchpch.h>
 #include <Lichen.h>
 
 class Sandbox : public lichen::Application {

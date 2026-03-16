@@ -1,10 +1,7 @@
 #pragma once
-#include <functional>
-#include <iostream>
-#include <string>
-#include "Lichen/Core.h"
 
-namespace lichen {
+namespace lichen 
+{
    /** Current status of Events: Blocking
     * Meaning, Events get dispatched as soon as they occur
     * No queuing has been implemented as of now

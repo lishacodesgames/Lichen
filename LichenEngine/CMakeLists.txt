@@ -4,6 +4,7 @@ file(GLOB LICHEN_SOURCES   ${SRC}/Lichen/*.cpp ${SRC}/Lichen/*.h)
 
 # Maybe add a static lib version
 add_library(lichen SHARED ${LICHEN_SOURCES})
+target_precompile_headers(lichen PUBLIC ${SRC}/lchpch.h)
 
 ## used for dllexport macro on Windows
 target_compile_definitions(lichen PRIVATE LCH_BUILD_SHARED) 

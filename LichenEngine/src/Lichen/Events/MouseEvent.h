@@ -1,8 +1,10 @@
 #pragma once
+#include <string>
+#include "Lichen/Core.h"
 #include "Event.h"
 
-namespace lichen {
-
+namespace lichen 
+{
    class LCH_API MouseMovedEvent : public Event {
    public:  
       EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)

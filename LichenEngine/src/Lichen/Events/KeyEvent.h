@@ -1,9 +1,9 @@
 #pragma once
-#include <string>
+#include "Lichen/Core.h"
 #include "Event.h"
 
-namespace lichen {
-
+namespace lichen 
+{
    class LCH_API KeyEvent : public Event {
    public:
       inline int getKeyCode() const { return m_key; }

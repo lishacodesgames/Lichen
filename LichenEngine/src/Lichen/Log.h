@@ -1,9 +1,10 @@
 #pragma once
+#include <spdlog/spdlog.h>
 #include <memory>
-#include "spdlog/spdlog.h"
-#include "Core.h"
+#include "Lichen/Core.h"
 
-namespace lichen {
+namespace lichen 
+{
    class LCH_API Log {
    public:
       static void Init();

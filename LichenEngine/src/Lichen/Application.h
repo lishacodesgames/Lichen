@@ -1,7 +1,8 @@
 #pragma once
 #include "Core.h"
 
-namespace lichen {
+namespace lichen 
+{
    class LCH_API Application {
    public:
       Application() = default;

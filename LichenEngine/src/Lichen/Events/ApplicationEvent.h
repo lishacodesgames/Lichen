@@ -1,8 +1,8 @@
 #pragma once
-#include <cstdint>
 #include "Event.h"
 
-namespace lichen {
+namespace lichen 
+{
    // --------------
    // WINDOW EVENTS
    // --------------
