@@ -27,3 +27,5 @@ add_custom_command(TARGET lichen POST_BUILD
       $<TARGET_FILE:lichen>
       $<TARGET_FILE_DIR:Sandbox>
 )
+
+add_subdirectory(external/spdlog)

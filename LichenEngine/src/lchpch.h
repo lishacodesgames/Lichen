@@ -3,7 +3,7 @@
 
 // ---- SPDLOG ----
 #include "spdlog/spdlog.h"
-#include "spdlog/sinks/stdout_sinks.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
 
 // ---- PLATFORM ----
 #if defined(LCH_PLATFORM_WINDOWS)
