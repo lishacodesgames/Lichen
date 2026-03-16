@@ -1,3 +1,6 @@
 [submodule "spdlog"]
 	path = LichenEngine/external/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "raylib"]
+	path = LichenEngine/external/raylib
+	url = https://github.com/lishacodesgames/slim-raylib.git
