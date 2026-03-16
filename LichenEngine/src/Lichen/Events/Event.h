@@ -2,7 +2,7 @@
 #include <functional>
 #include <iostream>
 #include <string>
-#include "Core.h"
+#include "Lichen/Core.h"
 
 namespace lichen {
    /** Current status of Events: Blocking
@@ -39,8 +39,8 @@ namespace lichen {
    */
    /// @param type Name of the type as per EventType's members
    #define EVENT_CLASS_TYPE(type) \
-      static EventType getStaticType() { return EventType::##type; }  /* For compiletime access */ \
-      EventType getEventType() const override { return EventType::##type; } /* Same as GetStaticType, but for runtime access */ \
+      static EventType getStaticType() { return EventType::type; }  /* For compiletime access */ \
+      EventType getEventType() const override { return EventType::type; } /* Same as GetStaticType, but for runtime polymorphoc access */ \
       const char* getName() const override { return #type; }
 
    class LCH_API Event {
@@ -78,4 +78,7 @@ namespace lichen {
    private:
       Event& m_event;
    };
+
+   /// @todo FIX, not working
+   inline std::ostream& operator<<(std::ostream& os, const Event &e) { return os << e.describe(); }
 }
