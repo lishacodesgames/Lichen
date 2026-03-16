@@ -15,3 +15,10 @@ target_include_directories(lichen PUBLIC
 )
 
 set_target_properties(lichen PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${LICHEN_OUTPUT_BASE}/Lichen)
+
+# copy library into exe's folder otherwise Windows throws tantrum
+add_custom_command(TARGET lichen POST_BUILD
+   COMMAND ${CMAKE_COMMAND} -E copy_if_different
+      $<TARGET_FILE:lichen>
+      $<TARGET_FILE_DIR:Sandbox>
+)
