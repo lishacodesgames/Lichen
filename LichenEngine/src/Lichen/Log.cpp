@@ -7,7 +7,7 @@ namespace lichen
    std::shared_ptr<spdlog::logger> Log::s_clientLogger;
 
    void Log::Init() {
-      spdlog::set_pattern("%^[%n-%l]: %v%$"); // [23:55:59][Client,info]: message
+      spdlog::set_pattern("%^[%n_%l]: %v%$"); // [client_info]: message
       
       // logger with console and multi-threading properties
       s_coreLogger = spdlog::stdout_color_mt("lichen");
