@@ -2,8 +2,14 @@ set(SRC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 file(GLOB LICHEN_SOURCES   ${SRC}/Lichen/*.cpp ${SRC}/Lichen/*.h)
 
+find_package(OpenGL REQUIRED)
+add_subdirectory(external/glfw)
+add_subdirectory(external/spdlog)
+
 # Maybe add a static lib version
 add_library(lichen SHARED ${LICHEN_SOURCES})
+target_link_libraries(lichen PRIVATE glfw spdlog::spdlog)
+
 target_precompile_headers(lichen PUBLIC ${SRC}/lchpch.h)
 
 # used for dllexport macro on Windows
@@ -27,5 +33,3 @@ add_custom_command(TARGET lichen POST_BUILD
       $<TARGET_FILE:lichen>
       $<TARGET_FILE_DIR:Sandbox>
 )
-
-add_subdirectory(external/spdlog)
