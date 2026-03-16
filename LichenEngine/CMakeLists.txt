@@ -14,7 +14,12 @@ target_include_directories(lichen PUBLIC
    ${CMAKE_CURRENT_SOURCE_DIR}/external/spdlog/include
 )
 
-set_target_properties(lichen PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${LICHEN_OUTPUT_BASE}/Lichen)
+set_target_properties(lichen PROPERTIES 
+   LIBRARY_OUTPUT_DIRECTORY # Shared library (non-Windows)
+      ${LICHEN_OUTPUT_BASE}/Lichen
+   RUNTIME_OUTPUT_DIRECTORY # Windows DLL
+      ${LICHEN_OUTPUT_BASE}/Lichen
+)
 
 # copy library into exe's folder otherwise Windows throws tantrum
 add_custom_command(TARGET lichen POST_BUILD

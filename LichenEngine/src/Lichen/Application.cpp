@@ -19,5 +19,5 @@ void lichen::Application::Run() {
    if(e.hasCategory(EventCategoryApplication))
       LCH_INFO("This is an Application event.");
    else  
-      LCH_CORE_ERROR("Window reisze is supposed to be an Application event!");
+      LCH_CORE_ERROR("Window resize is supposed to be an Application event!");
 }
