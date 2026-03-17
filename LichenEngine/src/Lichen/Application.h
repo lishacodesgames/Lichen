@@ -1,14 +1,19 @@
 #pragma once
+#include <memory>
+#include "Window.h"
 #include "Core.h"
 
 namespace lichen 
 {
    class LCH_API Application {
    public:
-      Application() = default;
+      Application();
       virtual ~Application() = default;
 
       void Run();
+   private:
+      std::unique_ptr<Window> m_window;
+      bool m_running;
    };
 
    Application* CreateApplication(); /// TO BE DEFINED IN CLIENT
