@@ -1,3 +1,4 @@
+#pragma once
 #include <functional>
 #include <cstdint>
 #include <string>
@@ -11,7 +12,7 @@ namespace lichen
       uint32_t width, height;
       std::string title;
 
-      WindowProps(const std::string& title = "Lichen Game Engine", uint32_t width = 600, uint32_t height = 600) 
+      WindowProps(uint32_t width = 600, uint32_t height = 600, const std::string& title = "Lichen Game Engine") 
          : width(width), height(height), title(title)
       {}
    };

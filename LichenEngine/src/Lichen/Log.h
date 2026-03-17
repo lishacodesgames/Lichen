@@ -18,23 +18,19 @@ namespace lichen
 }
 
 #ifndef LCH_CFG_DISTRO
-
    #define LCH_CORE_TRACE(...)   lichen::Log::getCoreLogger()->trace(__VA_ARGS__)
    #define LCH_CORE_INFO(...)    lichen::Log::getCoreLogger()->info(__VA_ARGS__)
    #define LCH_CORE_DEBUG(...)   lichen::Log::getCoreLogger()->debug(__VA_ARGS__)
    #define LCH_CORE_WARN(...)    lichen::Log::getCoreLogger()->warn(__VA_ARGS__)
    #define LCH_CORE_ERROR(...)   lichen::Log::getCoreLogger()->error(__VA_ARGS__)
    #define LCH_CORE_FATAL(...)   lichen::Log::getCoreLogger()->critical(__VA_ARGS__)
-
 #else
-
    #define LCH_CORE_TRACE(...)
    #define LCH_CORE_INFO(...)
    #define LCH_CORE_DEBUG(...)
    #define LCH_CORE_WARN(...)
    #define LCH_CORE_ERROR(...)
    #define LCH_CORE_FATAL(...)
-
 #endif
 
 #define LCH_TRACE(...)           lichen::Log::getClientLogger()->trace(__VA_ARGS__)

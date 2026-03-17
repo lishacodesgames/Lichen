@@ -1,24 +1,17 @@
 #include <lchpch.h>
 #include "Application.h"
 
-#include "Events/ApplicationEvent.h"
-#include "Events/Event.h"
-#include "Log.h"
+namespace lichen
+{
+   Application::Application() : m_running(true) {
+      m_window = Window::Create(WindowProps(650, 650));
+   }
 
-void lichen::Application::Run() {
-   int a = 100;
-   LCH_CORE_TRACE("I'M BEING TRACED D:");
-   LCH_CORE_INFO("Today is a Sunday.");
-   LCH_CORE_WARN("This is a {}", "warning");
-   LCH_FATAL("CRITICAL");
-   LCH_DEBUG("DEBUGGING {}", a);
-   LCH_ERROR("You've made an error!!!\n", a);
-   
-   WindowResizeEvent e(120, 322);
-   LCH_CORE_TRACE("{}", e.describe());
+   void Application::Run() {
+      while(m_running) {
+         m_window->OnUpdate();
 
-   if(e.hasCategory(EventCategoryApplication))
-      LCH_INFO("This is an Application event.");
-   else  
-      LCH_CORE_ERROR("Window resize is supposed to be an Application event!");
+         m_running = !(WindowShouldClose() && !IsKeyDown(KEY_ESCAPE)); // only pressing X will close the app
+      }
+   }
 }
