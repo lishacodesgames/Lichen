@@ -12,7 +12,7 @@ namespace lichen
       uint32_t width, height;
       std::string title;
 
-      WindowProps(const std::string& title, uint32_t width = 600, uint32_t height = 600) 
+      WindowProps(const std::string& title = "Lichen Game Engine", uint32_t width = 600, uint32_t height = 600) 
          : width(width), height(height), title(title)
       {}
    };
@@ -25,7 +25,7 @@ namespace lichen
       Window(const WindowProps& props);
       ~Window(); // Might make virtual for platform abstraction
 
-      static Window* Create(const WindowProps& props = WindowProps("Lichen Game Engine"));
+      static Window* Create(const WindowProps& props = WindowProps());
 
       void OnUpdate();
       
@@ -37,7 +37,7 @@ namespace lichen
          m_data.eventCallback = ecf;
       }
       void setVSync(bool enabled);
-      bool isVSync() const;
+      inline bool isVSync() const { return m_data.VSync; }
    private: 
       void Init(const WindowProps& props);
       void Shutdown();

@@ -1,6 +1,9 @@
 // ONLY MEANT TO BE INCLUDED IN CPP FILES 
 #pragma once
 
+// ---- GLFW ----
+#include "GLFW/glfw3.h"
+
 // ---- SPDLOG ----
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
