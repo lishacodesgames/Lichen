@@ -1,3 +1,4 @@
+#include <GLFW/glfw3.h>
 #include <functional>
 #include <cstdint>
 #include <string>
@@ -16,24 +17,38 @@ namespace lichen
       {}
    };
 
+   /// Parent window class for future platform abstraction
    class LCH_API Window {
    public:
       using EventCallbackFxn = std::function<void(Event&)>;
 
-      virtual ~Window() {}
+      Window(const WindowProps& props);
+      ~Window(); // Might make virtual for platform abstraction
 
       static Window* Create(const WindowProps& props = WindowProps("Lichen Game Engine"));
 
-      // ---- PURE VIRTUALS ----
-
-      virtual void OnUpdate() = 0;
+      void OnUpdate();
       
-      virtual uint32_t getWidth() const = 0;
-      virtual uint32_t getHeight() const = 0;
+      inline uint32_t getWidth() const { return m_data.properties.width; }
+      inline uint32_t getHeight() const { return m_data.properties.height; }
 
       // window attributes
-      virtual void setEventCallback(const EventCallbackFxn& ecf) = 0;
-      virtual void setVSync(bool enabled) = 0;
-      virtual bool isVSync() const = 0;
+      inline void setEventCallback(const EventCallbackFxn& ecf) {
+         m_data.eventCallback = ecf;
+      }
+      void setVSync(bool enabled);
+      bool isVSync() const;
+   private: 
+      void Init(const WindowProps& props);
+      void Shutdown();
+
+      struct WindowData {
+         WindowProps properties;
+         bool VSync;
+         EventCallbackFxn eventCallback;
+      };
+
+      GLFWwindow* m_window;
+      WindowData m_data;
    };
 }
