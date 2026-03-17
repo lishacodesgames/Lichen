@@ -8,6 +8,9 @@
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 
+// ---- LICHEN ----
+#include "Lichen/Log.h"
+
 // ---- PLATFORM ----
 #if defined(LCH_PLATFORM_WINDOWS)
    #include <Windows.h>
