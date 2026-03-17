@@ -1,9 +1,16 @@
 // ONLY MEANT TO BE INCLUDED IN CPP FILES 
 #pragma once
 
+// ---- RAYLIB ----
+#include "raylib.h"
+#include "raymath.h"
+
 // ---- SPDLOG ----
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
+
+// ---- LICHEN ----
+#include "Lichen/Log.h"
 
 // ---- PLATFORM ----
 #if defined(LCH_PLATFORM_WINDOWS)

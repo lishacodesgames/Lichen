@@ -1,4 +1,5 @@
 set(SRC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(EXT ${CMAKE_CURRENT_SOURCE_DIR}/external)
 
 file(GLOB LICHEN_SOURCES   ${SRC}/Lichen/*.cpp ${SRC}/Lichen/*.h)
 
@@ -16,7 +17,8 @@ target_compile_definitions(lichen PRIVATE LCH_BUILD_SHARED)
 
 target_include_directories(lichen PUBLIC 
    ${SRC}
-   ${CMAKE_CURRENT_SOURCE_DIR}/external/spdlog/include
+   ${EXT}/spdlog/include
+   ${EXT}/raylib/src
 )
 
 set_target_properties(lichen PROPERTIES 
