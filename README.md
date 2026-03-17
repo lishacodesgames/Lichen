@@ -36,8 +36,10 @@ I hope to learn a lot from this project as I have only made simple games till no
 ## Architecture
 Coming soon...
 
-## How to Clone
-`git clone --recursive` to get the raylib submodule local
+## How to use
+
+### Clone
+`git clone --recursive` to get all submodules locally
 <br>
 
 **If you forgot, do:** <br>
@@ -48,10 +50,20 @@ Coming soon...
 ```bash
 cmake --preset Distro
 cmake --build --preset Distro
-./bin/Distro_<your-OS>-<your-arch>/Sandbox/Sandbox
 ```
+
+### Run
+
+#### Windows
+```bash
+scripts\run.bat Distro
+```
+#### Mac/Linux
+```bash
+./scripts/run.sh Distro
+```
+
 **Note:** <br> 
-- for Windows, omit the `./` and add `.exe` at the end
 - Make sure you're running from the repo directory `Lichen/`
 - Make sure you have cmake and ninja in your path variables
 
