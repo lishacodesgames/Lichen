@@ -29,22 +29,18 @@ namespace lichen
 
       static void OnUpdate();
       
-      inline static uint32_t getWidth() { return m_data.properties.width; }
-      inline static uint32_t getHeight() { return m_data.properties.height; }
+      inline static uint32_t getWidth() { return m_properties.width; }
+      inline static uint32_t getHeight() { return m_properties.height; }
 
       // window attributes
       inline static void setEventCallback(const EventCallbackFxn& ecf) {
-         m_data.eventCallback = ecf;
+         m_eventCallback = ecf;
       }
    private: 
       static void Init(const WindowProps& props);
       static void Shutdown();
 
-      struct WindowData {
-         WindowProps properties;
-         EventCallbackFxn eventCallback;
-      };
-
-      static WindowData m_data;
+      static WindowProps m_properties;
+      static EventCallbackFxn m_eventCallback;
    };
 }

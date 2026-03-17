@@ -3,6 +3,7 @@ set(EXT ${CMAKE_CURRENT_SOURCE_DIR}/external)
 
 file(GLOB LICHEN_SOURCES   ${SRC}/Lichen/*.cpp ${SRC}/Lichen/*.h)
 
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_subdirectory(external/raylib)
 add_subdirectory(external/spdlog)
 

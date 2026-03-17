@@ -24,10 +24,7 @@ else()
    endif()
 endif()
 
-set(LICHEN_OUTPUT_BASE
-   # example: bin/LinuxDebug-x86_64
-   ${CMAKE_SOURCE_DIR}/bin/${PRESET_NAME}_${CMAKE_HOST_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}
-)
+set(LICHEN_OUTPUT_BASE ${CMAKE_SOURCE_DIR}/bin/${PRESET_NAME})
 
 # add platform macros
 if(WIN32)

@@ -6,4 +6,4 @@ _run_completion()
    COMPREPLY=($(compgen -W "$presets" -- "$cur"))
 }
 
-complete -F _run_completion run.sh
+complete -F _run_completion ./scripts/run.sh
