@@ -12,6 +12,10 @@
 		}
 	],
 	"settings": {
-		"cmake.sourceDirectory": "${workspaceFolder:repo}"
+		"cmake.sourceDirectory": "${workspaceFolder:repo}",
+		"files.exclude": {
+			"LichenEngine": true,
+			"Sandbox": true
+		}
 	}
 }
