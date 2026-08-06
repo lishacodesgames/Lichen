@@ -5,13 +5,18 @@
 			"name": "repo"
 		},
 		{
-			"path": "LichenEngine"
+			"path": "Engine"
 		},
 		{
 			"path": "Sandbox"
 		}
 	],
 	"settings": {
-		"cmake.sourceDirectory": "${workspaceFolder:repo}"
+		"cmake.sourceDirectory": "${workspaceFolder:repo}",
+
+		"files.exclude": {
+			"Engine": true,
+			"Sandbox": true
+		}
 	}
 }
