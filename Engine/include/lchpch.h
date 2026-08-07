@@ -1,4 +1,5 @@
 // ONLY MEANT TO BE INCLUDED IN CPP FILES 
+// To ensure this, there is no #pragma once
 
 // ---- PLATFORM ----
 #if defined(LCH_PLATFORM_WINDOWS)

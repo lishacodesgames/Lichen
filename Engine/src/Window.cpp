@@ -5,14 +5,9 @@
 
 namespace lichen
 {
-   static bool s_isGLFWinit = false;
+   static bool s_isGLFWinit = false; // ...what is this for?
 
-   Window* Window::Create(const WindowProps& props) { return new Window(props); }
-
-   Window::Window(const WindowProps& props) { Init(props); }
-   Window::~Window() { Shutdown(); }
-
-   void Window::Init(const WindowProps& props) {
+   void Window::Init(const WindowProperties& props) {
       m_data.properties = props;
       LCH_CORE_INFO(
          "Creating window \"{}\", ({}, {})", props.title, props.width, props.height
@@ -20,20 +15,20 @@ namespace lichen
 
       if(!s_isGLFWinit) {
          bool success = glfwInit();
-         LCH_CORE_ASSERT(success, "GLFW Initialisation failed")
+         LCH_CORE_ASSERT(success, "GLFW Initialisation failed!")
          s_isGLFWinit = success;
       }
 
+      // checking so c-style cast to int is safe
+      LCH_CORE_ASSERT(m_data.properties.width <= INT_MAX && m_data.properties.height <= INT_MAX, "Window dimensions are too large!");
+
       m_window = glfwCreateWindow(
          (int)m_data.properties.width, (int)m_data.properties.height, 
-         m_data.properties.title.c_str(), nullptr, nullptr
-      );
+         m_data.properties.title.c_str(), nullptr, nullptr);
       glfwMakeContextCurrent(m_window);
       glfwSetWindowUserPointer(m_window, &m_data);
       setVSync(true);
    }
-
-   void Window::Shutdown() { glfwDestroyWindow(m_window); }
 
    void Window::OnUpdate() {
       glfwPollEvents();
@@ -42,6 +37,6 @@ namespace lichen
 
    void Window::setVSync(bool enabled) {
       glfwSwapInterval(enabled); // 1 or 0 frames
-      m_data.VSync = enabled;
+      m_data.isVSync = enabled;
    }
 }

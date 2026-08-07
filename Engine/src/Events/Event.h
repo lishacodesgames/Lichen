@@ -1,4 +1,5 @@
 #pragma once
+#include "Core.h"
 
 namespace lichen 
 {
@@ -11,10 +12,10 @@ namespace lichen
 
    enum class EventType {
       None,
-      WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
-      AppTick, AppUpdate, AppRender,
-      KeyPressed, KeyReleased,
-      MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
+      WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved, // Window events
+      AppTick, AppUpdate, AppRender,                                        // App events
+      KeyPressed, KeyReleased,                                              // Key events
+      MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled    // Mouse events
    };
 
    /// an event can have multiple categories at once, hence each enum is defined on a separate position on a bitfield (each is a power of 2)
@@ -27,22 +28,19 @@ namespace lichen
       EventCategoryMouseButton   = BIT(4)
    };
 
-   /// @param cat an integer bitfield of the categories an event belongs to as per EventCategory enum
-   #define EVENT_CLASS_CATEGORY(cat) int getCategoryFlags() const override { return cat; }
+   /// @param category an integer bitfield of the categories an event belongs to as per EventCategory enum
+   #define EVENT_CLASS_CATEGORY(category) int getCategoryFlags() const override { return category; }
 
-   /*
-      ## pastes the argument as it is right there 
-      # stringizes the argument
-   */
    /// @param type Name of the type as per EventType's members
    #define EVENT_CLASS_TYPE(type) \
-      static EventType getStaticType() { return EventType::type; }  /* For compiletime access */ \
-      EventType getEventType() const override { return EventType::type; } /* Same as GetStaticType, but for runtime polymorphoc access */ \
+      static EventType getStaticType() { return EventType::type; }  /* For compiletime access, template type checking */ \
+      EventType getEventType() const override { return EventType::type; } /* Same as GetStaticType, but for runtime polymorphic access */ \
       const char* getName() const override { return #type; }
 
    class LCH_API Event {
-      friend class EventDispatcher;
    public:
+      virtual ~Event() = default;
+
       /// ---- GETTERS ----
       virtual EventType getEventType() const = 0;
       virtual const char* getName() const = 0;
@@ -54,28 +52,34 @@ namespace lichen
       inline bool hasCategory(EventCategory category) {
          return (getCategoryFlags() & category) != 0; 
       }
+
    protected:
-      bool m_handled = false; 
+      bool _handled = false; 
+
+   private:
+      friend class EventDispatcher;
    };
 
    class EventDispatcher {
    public:
       EventDispatcher(Event& e) : m_event(e) {}
 
-      /// @tparam Child    a child class of Event
+      /// @tparam Child: a child class of Event
       template <typename Child> 
       bool Dispatch(std::function<bool(Child&)> handleEvent) {
          // comparing compiletime type with runtime type
          if(m_event.getEventType() == Child::GetStaticType()) { 
-            m_event.m_handled = handleEvent(static_cast<Child&>(m_event));
+            m_event._handled = handleEvent(static_cast<Child&>(m_event));
             return true;
          } 
-         else return false;
+
+         return false;
       }
+
    private:
       Event& m_event;
    };
 
-   /// @todo FIX, not working
+   /// @bug not working
    inline std::ostream& operator<<(std::ostream& os, const Event &e) { return os << e.describe(); }
 }

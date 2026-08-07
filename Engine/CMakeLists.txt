@@ -1,9 +1,5 @@
-set(SRC ${CMAKE_CURRENT_SOURCE_DIR}/src)
-set(INCL ${CMAKE_CURRENT_SOURCE_DIR}/include)
-set(EXT ${CMAKE_CURRENT_SOURCE_DIR}/external)
-
-file(GLOB_RECURSE LICHEN_SOURCES ${SRC}/*.cpp)
-set(LICHEN_HEADERS ${INCL}/lchpch.h ${INCL}/Lichen.h)
+file(GLOB_RECURSE LICHEN_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h)
+file(GLOB LICHEN_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
 
 find_package(OpenGL REQUIRED) # required for glfw
 add_subdirectory(external/glfw)
@@ -12,12 +8,12 @@ add_subdirectory(external/spdlog)
 # Maybe add a static lib version
 add_library(lichen SHARED ${LICHEN_SOURCES} ${LICHEN_HEADERS})
 target_link_libraries(lichen PRIVATE glfw spdlog::spdlog_header_only)
-target_precompile_headers(lichen PUBLIC ${INCL}/lchpch.h)
+target_precompile_headers(lichen PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/lchpch.h)
 target_include_directories(lichen PUBLIC 
-   ${EXT}/spdlog/include
-   ${EXT}/glfw/include
-   ${INCL}
-   ${SRC}
+   ${CMAKE_CURRENT_SOURCE_DIR}/external/spdlog/include
+   ${CMAKE_CURRENT_SOURCE_DIR}/external/glfw/include
+   ${CMAKE_CURRENT_SOURCE_DIR}/include
+   ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
 # used for dllexport macro on Windows

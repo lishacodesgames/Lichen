@@ -93,6 +93,12 @@ sudo apt install \
 * C++ compiler: GCC 13.3 / Clang
 * Ninja (not *required*, but it's what the presets use)
 
+## Using the Engine
+- `EntryPoint.h` must be included in exactly **one** cpp file.
+- `Lichen.h` is the header to be included everywhere else. No need to include any other header.
+- **CMake setup:** for lichen, all you need to do is link the library.
+- **Logging**: Refer to [Log.h](Engine/src/Log.h) to see which log macros you want to use.
+
 ## License
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details. <br>
 Copyright (c) 2026 lishacodesgames

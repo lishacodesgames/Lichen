@@ -3,9 +3,6 @@
 
 namespace lichen
 {
-   std::shared_ptr<spdlog::logger> Log::s_coreLogger;
-   std::shared_ptr<spdlog::logger> Log::s_clientLogger;
-
    void Log::Init() {
       spdlog::set_pattern("%^[%n_%l]: %v%$"); // [client_info]: message
       

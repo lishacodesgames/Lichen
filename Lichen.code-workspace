@@ -2,7 +2,7 @@
 	"folders": [
 		{
 			"path": ".",
-			"name": "repo"
+			"name": "Lichen"
 		},
 		{
 			"path": "Engine"
@@ -11,12 +11,21 @@
 			"path": "Sandbox"
 		}
 	],
-	"settings": {
-		"cmake.sourceDirectory": "${workspaceFolder:repo}",
 
-		"files.exclude": {
+	"settings": {
+		"cmake.sourceDirectory": "${workspaceFolder:Lichen}",
+		"workbench.colorTheme": "Monokai",
+		"workbench.iconTheme": "helium-icon-theme",
+
+		"files.exclude": { // from explorer
 			"Engine": true,
 			"Sandbox": true
 		}
+	},
+
+	"extensions": {
+		"recommendations": [
+			"helgardrichard.helium-icon-theme"
+		]
 	}
 }
