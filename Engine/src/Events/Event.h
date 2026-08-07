@@ -49,9 +49,7 @@ namespace lichen
       virtual std::string describe() const { return getName(); }
 
       /// @return TRUE, if: true bits are overlapping
-      inline bool hasCategory(EventCategory category) {
-         return (getCategoryFlags() & category) != 0; 
-      }
+      inline bool hasCategory(EventCategory category) { return (getCategoryFlags() & category) != 0; }
 
    protected:
       bool _handled = false; 
@@ -64,11 +62,12 @@ namespace lichen
    public:
       EventDispatcher(Event& e) : m_event(e) {}
 
+      /// @note checks if the event type is the one that has occurred
       /// @tparam Child: a child class of Event
       template <typename Child> 
       bool Dispatch(std::function<bool(Child&)> handleEvent) {
          // comparing compiletime type with runtime type
-         if(m_event.getEventType() == Child::GetStaticType()) { 
+         if(m_event.getEventType() == Child::getStaticType()) { 
             m_event._handled = handleEvent(static_cast<Child&>(m_event));
             return true;
          } 
@@ -81,5 +80,5 @@ namespace lichen
    };
 
    /// @bug not working
-   inline std::ostream& operator<<(std::ostream& os, const Event &e) { return os << e.describe(); }
+   inline std::ostream& operator<<(std::ostream& os, const Event& e) { return os << e.describe(); }
 }

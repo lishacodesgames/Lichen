@@ -12,9 +12,7 @@ namespace lichen
       inline double getX() const { return m_mouseX; }
       inline double getY() const { return m_mouseY; }
 
-      std::string describe() const override {
-         return "Mouse Moved to: (" + std::to_string(m_mouseX) + ", " + std::to_string(m_mouseY) + ")";
-      }
+      std::string describe() const override { return std::format("Mouse moved to: ({}, {})", m_mouseX, m_mouseY); }
 
    private:
       double m_mouseX, m_mouseY;
@@ -29,9 +27,7 @@ namespace lichen
       inline double getXOffset() const { return m_xOffset; }
       inline double getYOffset() const { return m_yOffset; }
 
-      std::string describe() const override {
-         return "Mouse Scrolled by (" + std::to_string(m_xOffset) + ", " + std::to_string(m_yOffset) + ")";
-      }
+      std::string describe() const override { return std::format("Mouse scrolled by ({}. {})", m_xOffset, m_yOffset); }
 
    private:
       double m_xOffset, m_yOffset;
@@ -41,14 +37,14 @@ namespace lichen
    class LCH_API MouseButtonEvent : public Event {
    public:
       EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse | EventCategoryMouseButton)
-      inline int getButton() const { return m_button; }
+      inline int getButton() const { return _button; }
 
    protected:
-      int m_button;
+      int _button;
 
    protected:
       // This class is purely meant to serve as a parent to the MouseButtonEvent child classes, so only they can construct it.
-      MouseButtonEvent(int button) : m_button(button) {}
+      MouseButtonEvent(int button) : _button(button) {}
    };
 
    class LCH_API MouseButtonPressedEvent : public MouseButtonEvent {
@@ -57,9 +53,7 @@ namespace lichen
 
       EVENT_CLASS_TYPE(MouseButtonPressed)
 
-      std::string describe() const override {
-         return "Mouse Button (" + std::to_string(m_button) + ") Pressed";
-      }
+      std::string describe() const override { return std::format("Mouse Button ({}) pressed.", _button); }
    };
 
    class LCH_API MouseButtonReleasedEvent : public MouseButtonEvent {
@@ -68,8 +62,7 @@ namespace lichen
 
       EVENT_CLASS_TYPE(MouseButtonReleased)
 
-      std::string describe() const override {
-         return "Mouse Button (" + std::to_string(m_button) + ") Released";
-      }
+      /// @todo implemnt toString(button)
+      std::string describe() const override { return std::format("Mouse Button ({}) released.", _button); }
    };
 }

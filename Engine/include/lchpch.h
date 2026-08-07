@@ -59,6 +59,7 @@
 // ---- SPDLOG ----
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
+#include "spdlog/fmt/ostr.h" // for custom type formatting
 
 // ========================
 // 3. INTERNAL ENGINE CORE

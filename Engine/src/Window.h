@@ -22,12 +22,12 @@ namespace lichen
       ~Window() { Shutdown(); } // Might make virtual for platform abstraction
 
       void OnUpdate();
-      
-      inline void setEventCallback(const EventCallbackFunction& ecf) {
-         m_data.eventCallback = ecf;
-      }
+
+   public: // setters
+      inline void setEventCallback(const EventCallbackFunction& fxn) { m_data.eventCallback = fxn; }
       void setVSync(bool enabled);
 
+   public: // getters
       inline uint32_t getWidth() const { return m_data.properties.width; }
       inline uint32_t getHeight() const { return m_data.properties.height; }
 

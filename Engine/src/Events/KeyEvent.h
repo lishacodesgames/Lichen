@@ -18,14 +18,13 @@ namespace lichen
 
    class LCH_API KeyPressedEvent : public KeyEvent {
    public:
-      KeyPressedEvent(int keycode, int repeatCount) : KeyEvent(keycode), m_repeat(repeatCount) {}
+      KeyPressedEvent(int keycode, int repeatCount = 0) : KeyEvent(keycode), m_repeat(repeatCount) {}
 
       EVENT_CLASS_TYPE(KeyPressed)
       inline int getRepeats() const { return m_repeat; }
 
       std::string describe() const override {
-         return
-            "Key Pressed: " + std::to_string(_keycode) + "\t(" + std::to_string(m_repeat) + " times)";
+         return std::format("Key Pressed: {}", _keycode) + (m_repeat == 0 ? "" : std::format("\t({} times)", m_repeat));
       }
 
    private:
@@ -38,6 +37,6 @@ namespace lichen
 
       EVENT_CLASS_TYPE(KeyReleased)
 
-      std::string describe() const override { return "Key Released: " + std::to_string(_keycode); }
+      std::string describe() const override { return std::format("Key Released: {}", _keycode); }
    };
 }

@@ -16,9 +16,7 @@ namespace lichen
       inline uint32_t getWidth() const { return m_width; }
       inline uint32_t getHeight() const { return m_height; }
 
-      std::string describe() const override {
-         return "Window Resized to: (" + std::to_string(m_width) + ", " + std::to_string(m_height) + ")";
-      }
+      std::string describe() const override { return std::format("Window resized to: ({}, {})", m_width, m_height); }
 
    private:
       uint32_t m_width, m_height;
@@ -28,6 +26,8 @@ namespace lichen
    public:
       EVENT_CLASS_CATEGORY(EventCategoryApplication)
       EVENT_CLASS_TYPE(WindowClose)
+
+      std::string describe() const override { return std::format("Window closed!"); }
    };
 
    // ---------------
