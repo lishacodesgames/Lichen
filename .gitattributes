@@ -1,2 +1,4 @@
 *.c linguist-vendored
 *.h linguist-vendored
+*.sh linguist-vendored
+*.bat linguist-vendored
